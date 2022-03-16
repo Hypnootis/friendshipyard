@@ -4,41 +4,62 @@ import java.util.ArrayList;
 
 public class InitAnimals {
 	
-	private ArrayList<Object> animals = new ArrayList<Object>();
+	private static ArrayList<Animal> animals = new ArrayList<Animal>();
 	
-	void initDefault() {
-		Dog rex = new Dog("Rex", "Shepherd", "Royal Canin", "Tom");
+	static ArrayList<Animal> initDefault() {
+		
+		animals.clear();
+		
+		// Initialize all the default animals, ones specified in the doc
+		
+		Dog rex = new Dog("Rex", "Shepherd", "Royal Canin");
 		animals.add(rex);
-		Dog max = new Dog("Max", "Shepherd", "Purina ONE", "Jay");
+		Dog max = new Dog("Max", "Shepherd", "Purina ONE");
 		animals.add(max);
-		Dog tom = new Dog("Tom", "Husky", "Royal Canin", "Rex");
+		Dog tom = new Dog("Tom", "Husky", "Royal Canin");
 		animals.add(tom);
-		Dog jay = new Dog("Jay", "Husky", "Purina ONE", "Max");
+		Dog jay = new Dog("Jay", "Husky", "Purina ONE");
 		animals.add(jay);
 		
-		Cat zoe = new Cat("Zoe", "9Lives", "Ada");
+		Cat zoe = new Cat("Zoe", "9Lives");
 		animals.add(zoe);
-		Cat ada = new Cat("Ada", "Purina Friskies", "Zoe");
+		Cat ada = new Cat("Ada", "Purina Friskies");
 		animals.add(ada);
 		
-		Chicken meg = new Chicken("Meg", "Purina Layena", true, 0.4d, "Lis");
+		Chicken meg = new Chicken("Meg", "Purina Layena", true, 0.4d);
 		animals.add(meg);
-		Chicken lis = new Chicken("Lis", "Manna Pro", true, 0.35d, "Meg");
+		Chicken lis = new Chicken("Lis", "Manna Pro", true, 0.35d);
 		animals.add(lis);
-		Chicken emi = new Chicken("Emi", "Purina Layena", false, 0.25d, "Lua");
+		Chicken emi = new Chicken("Emi", "Purina Layena", false, 0.25d);
 		animals.add(emi);
-		Chicken lua = new Chicken("Lua", "Manna Pro", false, 0.3d, "Emi");
+		Chicken lua = new Chicken("Lua", "Manna Pro", false, 0.3d);
 		animals.add(lua);
 		
 		Rooster bob = new Rooster("Bob", "Manna Pro", 0.5d);
 		animals.add(bob);
 		
-		Parrot mac = new Parrot("Mac", "Lafeber Original", 0.33d, true, "Alf");
+		Parrot mac = new Parrot("Mac", "Lafeber Original", 0.33d, true);
 		animals.add(mac);
-		Parrot alf = new Parrot("Alf", "Kaytee Fiesta", 0.25d, false, "Mac");
+		Parrot alf = new Parrot("Alf", "Kaytee Fiesta", 0.25d, false);
 		animals.add(alf);
 		
+		// Initialize default best friends, this would be done separately
+		// If not using the default animals
 		
+		rex.setBestFriend(tom);
+		max.setBestFriend(jay);
+		tom.setBestFriend(rex);
+		jay.setBestFriend(max);
+		zoe.setBestFriend(ada);
+		ada.setBestFriend(zoe);
+		meg.setBestFriend(lis);
+		lis.setBestFriend(meg);
+		emi.setBestFriend(lua);
+		lua.setBestFriend(emi);
+		mac.setBestFriend(alf);
+		alf.setBestFriend(mac);
 		
+		return animals;
 	}
+	
 }
