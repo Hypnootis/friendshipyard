@@ -1,20 +1,20 @@
 package com.hypnootis.friendshipyard;
 import java.util.ArrayList;
 
-public class Animal {
+public class Animal <T extends Animal<?>>{
 		String name;
 		String type;
-		Animal bestFriend;
-		ArrayList<Animal> friends;
+		String bestFriend;
+		ArrayList<T> friends;
 		String favoriteFood;
 	
-	Animal(String name, Animal bestFriend, String favoriteFood){
+	Animal(String name, String bestFriend, String favoriteFood){
 		this.name = name;
 		this.bestFriend = bestFriend;
 		this.favoriteFood = favoriteFood;
 	}
 		
-	void addFriend(Animal friend) {
+	void addFriend(T friend) {
 		if (!this.friends.contains(friend)) {
 			this.friends.add(friend);
 		}
@@ -23,7 +23,7 @@ public class Animal {
 		}
 	}
 	
-	void removeFriend(Animal friend) {
+	void removeFriend(T friend) {
 		if (this.friends.contains(friend)) {
 			this.friends.remove(friend);
 		}

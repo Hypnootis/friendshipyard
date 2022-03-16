@@ -4,7 +4,7 @@ public class Dog extends Animal {
 
 	String breed;
 	
-	Dog(String name, Animal bestFriend, String favoriteFood, String breed){
+	Dog(String name, String breed, String favoriteFood, String bestFriend){
 		super(name, bestFriend, favoriteFood);
 		this.breed = breed;
 		this.type = "dog";

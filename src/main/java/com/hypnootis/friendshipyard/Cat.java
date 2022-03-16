@@ -4,7 +4,7 @@ public class Cat extends Animal{
 	
 	// Bare-bones class, but additional functionality could be added
 	
-	Cat(String name, Animal bestFriend, String favoriteFood) {
+	Cat(String name, String favoriteFood, String bestFriend) {
 		super(name, bestFriend, favoriteFood);
 		this.type = "cat";
 	}
