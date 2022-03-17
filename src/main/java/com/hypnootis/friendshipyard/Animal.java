@@ -36,7 +36,7 @@ public class Animal {
 	}
 	
 	void printAttributes() {
-		System.out.println("Name: " + this.name + ". Favorite food: " + this.favoriteFood + ". Best friend:  " + this.bestFriend);
+		System.out.println("Name: " + this.name + ". Favorite food: " + this.favoriteFood + ". Best friend:  " + this.bestFriend.name);
 	}
 	
 }

@@ -9,4 +9,9 @@ public class Dog extends Animal {
 		this.breed = breed;
 		this.type = "dog";
 	}
+	
+	void printAttributes() {
+		System.out.println("Name: " + this.name + ". Breed: " + this.breed + ". Favorite food: " + this.favoriteFood
+				+ ". Best friend: " + this.bestFriend.name);
+	}
 }

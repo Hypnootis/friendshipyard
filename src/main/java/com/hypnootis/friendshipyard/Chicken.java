@@ -9,5 +9,10 @@ public class Chicken extends Bird {
 		this.type = "chicken";
 		this.laysEggs = laysEggs;
 	}
+	
+	void printAttributes() {
+		System.out.println("Name: " + this.name + ". Favorite food: " + this.favoriteFood + ". Lays eggs: " 
+	 + Boolean.toString(laysEggs) + ". Wingspan: " + Double.toString(wingspan) + "m. Best friend: " + this.bestFriend.name);
+	}
 
 }

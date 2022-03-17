@@ -10,8 +10,8 @@ public class Simulation {
 		this.animals = animals;
 	}
 	
-	void morning(ArrayList<Animal> animals) {
-		for (Animal animal : animals) {
+	void morning() {
+		for (Animal animal : this.animals) {
 			animal.printAttributes();
 			
 		}
