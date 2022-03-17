@@ -13,21 +13,21 @@ public class Animal {
 		this.favoriteFood = favoriteFood;
 	}
 		
-	void addFriend(Animal friend) {
+	void addFriend(Animal friend, boolean printEvent) {
 		if (!this.friends.contains(friend)) {
 			this.friends.add(friend);
-		}
-		else {
-			System.out.println(friend.name + " is already a friend of " + this.name);
+			if (printEvent) {
+			System.out.println(this.name + " is now friends with " + friend.name + "!");
+			}
 		}
 	}
 	
-	void removeFriend(Animal friend) {
+	void removeFriend(Animal friend, boolean printEvent) {
 		if (this.friends.contains(friend)) {
 			this.friends.remove(friend);
-		}
-		else {
-			System.out.println(friend.name + " is not a friend of " + this.name);
+			if (printEvent) {
+				System.out.println(this.name + " is no longer friends with " + friend.name);
+			}
 		}
 	}
 	

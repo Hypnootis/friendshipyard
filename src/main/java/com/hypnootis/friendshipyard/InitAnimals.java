@@ -60,7 +60,9 @@ public class InitAnimals {
 		alf.setBestFriend(mac);
 		
 		for (Animal animal : animals) {
-			animal.addFriend(animal.bestFriend);
+			if (animal.bestFriend != null) {
+			animal.addFriend(animal.bestFriend, false);
+			}
 		}
 		
 		return animals;

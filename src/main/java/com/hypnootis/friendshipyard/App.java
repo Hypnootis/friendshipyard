@@ -6,7 +6,7 @@ public class App {
     	
     	Simulation sim = new Simulation(InitAnimals.initDefault());
     	
-    	sim.morning();
+    	sim.simulateMany(10, false);
     }
     
 }
