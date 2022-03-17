@@ -59,6 +59,10 @@ public class InitAnimals {
 		mac.setBestFriend(alf);
 		alf.setBestFriend(mac);
 		
+		for (Animal animal : animals) {
+			animal.addFriend(animal.bestFriend);
+		}
+		
 		return animals;
 	}
 	

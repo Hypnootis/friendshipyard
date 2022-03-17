@@ -5,7 +5,7 @@ public class Animal {
 		String name;
 		String type;
 		Animal bestFriend;
-		ArrayList<Animal> friends;
+		ArrayList<Animal> friends = new ArrayList<Animal>();
 		String favoriteFood;
 	
 	Animal(String name, String favoriteFood){
