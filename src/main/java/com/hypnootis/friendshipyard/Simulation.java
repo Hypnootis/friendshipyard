@@ -108,12 +108,77 @@ public class Simulation {
 	}
 	
 	void printChart(boolean printEvents) {
-		int rows = this.animals.size();
-		int columns = this.animals.size();
-		int[][] chart = new int[rows][columns];
 		
-		for (int[] row : chart) {
-			System.out.println("hello");
+		
+		
+		/*
+		Animal[][] animalsMatrix = new Animal[size][size];
+		String[][] chart = new String[size][size];
+		*/
+		
+		String header = " ".repeat(animals.get(0).name.length() + 1);
+		int rowLength = animals.size() + animals.get(0).name.length() + 1;
+		
+		for (Animal animal : animals) {
+			header += animal.name + "|";
+			rowLength += animal.name.length();
+			
+			/*
+			for (int i = 0; i < size; i++) {
+				for (int j = 0; i < size; i++) {
+					animalsMatrix[i][j] = animals.get(j); 
+				}
+				
+			}
+			*/
+		}
+		
+		/*
+		// Populate the animals matrix
+		for (int i = 0; i < size; i++) {
+			for (int j = 0; j < size; j++) {
+				animalsMatrix[i][j] = animals.get(j); 
+			}
+		}
+		
+		// Go through the animals matrix and check if there are friend matches
+		for (int i = size - 1; i > 0; i--) {
+			for (int j = size - 1; j > 0; j--) {
+				if (animalsMatrix[i][j].friends.contains(animalsMatrix[i][j - 1])) {
+					chart[i][j] = "y";
+				}
+				else {
+					chart[i][j] = "n";
+				}
+			}
+		}
+		*/
+		
+		/*
+		for (Animal animal : animals) {
+			rowLength += animal.name.length();
+		}
+		*/
+		System.out.println(header);
+		/*
+		for (int i = 0; i < animals.size(); i++) {
+			System.out.println("-".repeat(rowLength));
+			String newRow = "";
+			
+			for (int j = 0; j < size; j++) {
+				newRow += chart[i][j] + "|";
+			}
+			System.out.println(newRow);
+		}
+		*/
+		
+		for (int i = 0; i < animals.size(); i++) {
+			String isFriend = "";
+			Animal animal = animals.get(i);
+			
+			for (Animal friend : animals) {
+				
+			}
 		}
 	}
 	
