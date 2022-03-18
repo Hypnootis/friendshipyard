@@ -175,11 +175,20 @@ public class Simulation {
 		for (int i = 0; i < animals.size(); i++) {
 			String isFriend = "";
 			Animal animal = animals.get(i);
+			String row = animal.name + "";
+			String emptySpace = (animal.name.substring(animal.name.length() / 2));
 			
 			for (Animal friend : animals) {
-				
+				if (friend != animal) {
+					isFriend = animal.friends.contains(friend) ? "y" : "n";
+				}
+				else {
+					isFriend = "X";
+				}
+				row += ("|" + emptySpace);
 			}
+			System.out.println(row);
 		}
 	}
-	
 }
+	
