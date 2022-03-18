@@ -14,12 +14,17 @@ public class Simulation {
 		
 	}
 	
+	void clearAnimals() {
+		this.animals.clear();
+	}
+	
 	void friendEvent(Animal animal, boolean printEvent) {
 		Animal newFriend = animals.get(rand.nextInt(animals.size()));
 		
 		if (newFriend != animal.bestFriend && newFriend != animal && !animal.friends.contains(newFriend)) {
+			if (printEvent) {
 			System.out.println(animal.name + " asks " + newFriend.name + " to be friends.");
-			
+			}
 			if (animal.friends.size() >= 3) {
 				
 				if (rand.nextInt(100) < 90) {
@@ -75,14 +80,41 @@ public class Simulation {
 			unfriendEvent(animal, printEvents);
 			}
 		}
+		System.out.println();
 	}
 	
 	void lunch(boolean printEvents) {
 		
+		ArrayList<String> favoriteFoods = new ArrayList<String>();
+		
+		for (Animal animal : animals) {
+			if (!favoriteFoods.contains(animal.favoriteFood)) {
+				favoriteFoods.add(animal.favoriteFood);
+			}
+		}
+		
 		if (printEvents) {
-		System.out.println("Lunch, baby!");
-		//for (Animal animal : this.animals) {
-		//}
+			
+			for (String food : favoriteFoods) {
+				String eaters = "";
+				int i = 0; // For keeping track if a food only has a single favourer
+				for (Animal animal : animals) {
+					if (animal.favoriteFood == food) {
+						if (eaters.length() != 0) {
+							eaters += " and ";
+						}
+						eaters += animal.name;
+						i++;
+					}
+				}
+				if (i == 1) {
+					System.out.println(eaters + " is eating " + food);
+				}
+				else {
+				System.out.println(eaters + " are eating " + food);
+				}
+			}
+			System.out.println();
 		}
 	}
 	
@@ -101,82 +133,35 @@ public class Simulation {
 	}
 	
 	void simulateMany(int days, boolean printEvents) {
-		for (int i = 0; i < days; i++) {
+		for (int i = 0; i <= days; i++) {
 			simulateDay(printEvents);
 		}
-		simulateDay(true);
 	}
 	
 	void printChart(boolean printEvents) {
 		
-		
-		
-		/*
-		Animal[][] animalsMatrix = new Animal[size][size];
-		String[][] chart = new String[size][size];
-		*/
-		
-		String header = " ".repeat(animals.get(0).name.length() + 1);
-		int rowLength = animals.size() + animals.get(0).name.length() + 1;
+		String longestName = "";
 		
 		for (Animal animal : animals) {
-			header += animal.name + "|";
-			rowLength += animal.name.length();
-			
-			/*
-			for (int i = 0; i < size; i++) {
-				for (int j = 0; i < size; i++) {
-					animalsMatrix[i][j] = animals.get(j); 
-				}
-				
-			}
-			*/
-		}
-		
-		/*
-		// Populate the animals matrix
-		for (int i = 0; i < size; i++) {
-			for (int j = 0; j < size; j++) {
-				animalsMatrix[i][j] = animals.get(j); 
+			if (animal.name.length() > longestName.length()) {
+				longestName = animal.name;
 			}
 		}
 		
-		// Go through the animals matrix and check if there are friend matches
-		for (int i = size - 1; i > 0; i--) {
-			for (int j = size - 1; j > 0; j--) {
-				if (animalsMatrix[i][j].friends.contains(animalsMatrix[i][j - 1])) {
-					chart[i][j] = "y";
-				}
-				else {
-					chart[i][j] = "n";
-				}
-			}
-		}
-		*/
+		int rowLength = animals.size() + longestName.length();
+		String header = " ".repeat(longestName.length());
 		
-		/*
 		for (Animal animal : animals) {
-			rowLength += animal.name.length();
+			header += "|" + animal.name;
+			rowLength += animal.name.length(); 
 		}
-		*/
-		System.out.println(header);
-		/*
-		for (int i = 0; i < animals.size(); i++) {
-			System.out.println("-".repeat(rowLength));
-			String newRow = "";
-			
-			for (int j = 0; j < size; j++) {
-				newRow += chart[i][j] + "|";
-			}
-			System.out.println(newRow);
-		}
-		*/
+		System.out.println("\n" + header);
+
 		
 		for (int i = 0; i < animals.size(); i++) {
 			String isFriend = "";
 			Animal animal = animals.get(i);
-			String row = animal.name + "";
-			String emptySpace = (animal.name.substring(animal.name.length() / 2));
+			String row = " ".repeat(longestName.length() - animal.name.length()) + animal.name;
 			
 			for (Animal friend : animals) {
 				if (friend != animal) {
@@ -185,10 +170,12 @@ public class Simulation {
 				else {
 					isFriend = "X";
 				}
-				row += ("|" + emptySpace);
+				String emptySpace = " ".repeat(friend.name.length() -1);
+				row += ("|" + isFriend + emptySpace);
+				
 			}
 			System.out.println(row);
+			}
 		}
 	}
-}
 	

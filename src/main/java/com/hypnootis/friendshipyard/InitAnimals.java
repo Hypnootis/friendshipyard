@@ -12,6 +12,7 @@ public class InitAnimals {
 		
 		// Initialize all the default animals, ones specified in the doc
 		
+		
 		Dog rex = new Dog("Rex", "Shepherd", "Royal Canin");
 		animals.add(rex);
 		Dog max = new Dog("Max", "Shepherd", "Purina ONE");
@@ -43,6 +44,7 @@ public class InitAnimals {
 		Parrot alf = new Parrot("Alf", "Kaytee Fiesta", 0.25d, false);
 		animals.add(alf);
 		
+		
 		// Initialize default best friends, this would be done separately
 		// If not using the default animals
 		
@@ -63,9 +65,40 @@ public class InitAnimals {
 			if (animal.bestFriend != null) {
 			animal.addFriend(animal.bestFriend, false);
 			}
+			else if (animal.bestFriend == null){
+				animal.setBestFriend(animal);
+			}
 		}
 		
 		return animals;
+	}
+	
+	void initAnimal(Animal animal) {
+		animals.add(animal);
+	}
+	
+	void initAnimal(Animal animal, Animal bestFriend) {
+		animals.add(animal);
+		animal.setBestFriend(bestFriend);
+		animal.addFriend(bestFriend, false);
+	}
+	
+	void removeFriendship(Animal animal, Animal friend) {
+		if (animal.friends.contains(friend)) {
+			animal.friends.remove(friend);
+		}
+		else {
+			System.out.println(animal.name + " and " + friend.name + " are not friends!");
+		}
+	}
+	
+	void addFriendship(Animal animal, Animal newFriend) {
+		if (!animal.friends.contains(newFriend)) {
+			animal.addFriend(newFriend, false);
+		}
+		else {
+			System.out.println(animal.name + " and " + newFriend.name + " are already friends!");
+		}
 	}
 	
 }

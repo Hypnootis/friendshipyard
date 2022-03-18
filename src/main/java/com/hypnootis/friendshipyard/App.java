@@ -4,9 +4,16 @@ public class App {
     
     public static void main(String[] args) {
     	
-    	Simulation sim = new Simulation(InitAnimals.initDefault());
+    	// Initialize the animals
     	
-    	sim.simulateMany(10, false);
+    	Simulation sim = new Simulation(InitAnimals.initDefault());
+    
+    	
+    	// Simulation.simulateMany() just calls Simulation.simulateDay()
+    	// as many times as desired
+    	// Set printEvents to true if you want to see all of the events
+    	sim.simulateMany(10, true);
+    
     }
     
 }

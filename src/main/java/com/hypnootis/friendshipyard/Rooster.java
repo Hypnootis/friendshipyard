@@ -4,6 +4,8 @@ public class Rooster extends Bird{
 
 	Rooster(String name, String favoriteFood, double wingspan) {
 		super(name, favoriteFood, wingspan);
+		
+		this.bestFriend = this;
 	}
 
 }
