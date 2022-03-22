@@ -3,6 +3,8 @@ package com.hypnootis.friendshipyard;
 import java.util.ArrayList;
 import java.util.Random;
 
+import com.hypnootis.friendshipyard.animals.Animal;
+
 public class Simulation {
 
 	private ArrayList<Animal> animals = new ArrayList<Animal>();
@@ -21,20 +23,20 @@ public class Simulation {
 	void friendEvent(Animal animal, boolean printEvent) {
 		Animal newFriend = animals.get(rand.nextInt(animals.size()));
 		
-		if (newFriend != animal.bestFriend && newFriend != animal && !animal.friends.contains(newFriend)) {
+		if (!newFriend.equals(animal.getBestFriend()) && !newFriend.equals(animal) && !animal.getFriends().contains(newFriend)) {
 			if (printEvent) {
-			System.out.println(animal.name + " asks " + newFriend.name + " to be friends.");
+			System.out.println(animal.getName() + " asks " + newFriend.getName() + " to be friends.");
 			}
-			if (animal.friends.size() >= 3) {
+			if (animal.getFriends().size() >= 3) {
 				
 				if (rand.nextInt(100) < 90) {
 					animal.addFriend(newFriend, printEvent);
 				}
 				else {
-					System.out.println(newFriend.name + " doesn't want to be friends with " + animal.name + ".");
+					System.out.println(newFriend.getName() + " doesn't want to be friends with " + animal.getName() + ".");
 				}
 			}
-			else if (animal.friends.size() < 3) {
+			else if (animal.getFriends().size() < 3) {
 				
 				if (rand.nextInt(100) > 90) {
 					animal.addFriend(newFriend, printEvent);
@@ -49,18 +51,18 @@ public class Simulation {
 	
 	void unfriendEvent(Animal animal, boolean printEvent) {
 		
-		Animal friend = animal.friends.get(rand.nextInt(animal.friends.size()));
+		Animal friend = animal.getFriends().get(rand.nextInt(animal.getFriends().size()));
 		
-		if (friend != animal.bestFriend && friend != animal) {
+		if (!friend.equals(friend.getBestFriend()) && !friend.equals(animal)) {
 			
-			if (animal.friends.size() >= 3) {
+			if (animal.getFriends().size() >= 3) {
 				
 				if (rand.nextInt(100) < 90) {
 					animal.removeFriend(friend, printEvent);
 					friend.removeFriend(animal, printEvent);
 					
 					if (printEvent) {
-					System.out.println(animal.name + " is no longer friends with " + friend.name + ".");
+					System.out.println(animal.getName() + " is no longer friends with " + friend.getName() + ".");
 					}
 				}
 			}
@@ -76,7 +78,7 @@ public class Simulation {
 		}
 		
 		for (Animal animal : this.animals) {
-			if (animal.friends.size() != 0) {
+			if (animal.getFriends().size() != 0) {
 			unfriendEvent(animal, printEvents);
 			}
 		}
@@ -88,8 +90,8 @@ public class Simulation {
 		ArrayList<String> favoriteFoods = new ArrayList<String>();
 		
 		for (Animal animal : animals) {
-			if (!favoriteFoods.contains(animal.favoriteFood)) {
-				favoriteFoods.add(animal.favoriteFood);
+			if (!favoriteFoods.contains(animal.getFavoriteFood())) {
+				favoriteFoods.add(animal.getFavoriteFood());
 			}
 		}
 		
@@ -97,13 +99,13 @@ public class Simulation {
 			
 			for (String food : favoriteFoods) {
 				String eaters = "";
-				int i = 0; // For keeping track if a food only has a single favourer
+				int i = 0; // For keeping track if a food only has a single favorer
 				for (Animal animal : animals) {
-					if (animal.favoriteFood == food) {
+					if (animal.getFavoriteFood() == food) {
 						if (eaters.length() != 0) {
 							eaters += " and ";
 						}
-						eaters += animal.name;
+						eaters += animal.getName();
 						i++;
 					}
 				}
@@ -143,8 +145,8 @@ public class Simulation {
 		String longestName = "";
 		
 		for (Animal animal : animals) {
-			if (animal.name.length() > longestName.length()) {
-				longestName = animal.name;
+			if (animal.getName().length() > longestName.length()) {
+				longestName = animal.getName();
 			}
 		}
 		
@@ -152,8 +154,8 @@ public class Simulation {
 		String header = " ".repeat(longestName.length());
 		
 		for (Animal animal : animals) {
-			header += "|" + animal.name;
-			rowLength += animal.name.length(); 
+			header += "|" + animal.getName();
+			rowLength += animal.getName().length(); 
 		}
 		System.out.println("\n" + header);
 
@@ -161,21 +163,50 @@ public class Simulation {
 		for (int i = 0; i < animals.size(); i++) {
 			String isFriend = "";
 			Animal animal = animals.get(i);
-			String row = " ".repeat(longestName.length() - animal.name.length()) + animal.name;
+			String row = " ".repeat(longestName.length() - animal.getName().length()) + animal.getName();
 			
 			for (Animal friend : animals) {
 				if (friend != animal) {
-					isFriend = animal.friends.contains(friend) ? "y" : "n";
+					isFriend = animal.getFriends().contains(friend) ? "y" : "n";
 				}
 				else {
 					isFriend = "X";
 				}
-				String emptySpace = " ".repeat(friend.name.length() -1);
+				String emptySpace = " ".repeat(friend.getName().length() -1);
 				row += ("|" + isFriend + emptySpace);
 				
 			}
 			System.out.println(row);
 			}
 		}
+	
+	
+	void initAnimal(Animal animal) {
+		animals.add(animal);
+	}
+	
+	void initAnimal(Animal animal, Animal bestFriend) {
+		animals.add(animal);
+		animal.setBestFriend(bestFriend);
+		animal.addFriend(bestFriend, false);
+	}
+	
+	void removeFriendship(Animal animal, Animal friend) {
+		if (animal.getFriends().contains(friend)) {
+			animal.getFriends().remove(friend);
+		}
+		else {
+			System.out.println(animal.getName() + " and " + friend.getName() + " are not friends!");
+		}
+	}
+	
+	void addFriendship(Animal animal, Animal newFriend) {
+		if (!animal.getFriends().contains(newFriend)) {
+			animal.addFriend(newFriend, false);
+		}
+		else {
+			System.out.println(animal.getName() + " and " + newFriend.getName() + " are already friends!");
+		}
+	}
 	}
 	

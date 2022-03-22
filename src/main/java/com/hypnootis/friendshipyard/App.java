@@ -1,12 +1,14 @@
 package com.hypnootis.friendshipyard;
 
+import com.hypnootis.friendshipyard.animals.DefaultAnimals;
+
 public class App {
     
     public static void main(String[] args) {
     	
     	// Initialize the animals
     	
-    	Simulation sim = new Simulation(InitAnimals.initDefault());
+    	Simulation sim = new Simulation(DefaultAnimals.getAnimals());
     
     	
     	// Simulation.simulateMany() just calls Simulation.simulateDay()

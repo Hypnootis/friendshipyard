@@ -1,12 +1,11 @@
-package com.hypnootis.friendshipyard;
+package com.hypnootis.friendshipyard.animals;
 
 public class Cat extends Animal{
 	
 	// Bare-bones class, but additional functionality could be added
 	
-	Cat(String name, String favoriteFood) {
+	public Cat(String name, String favoriteFood) {
 		super(name, favoriteFood);
-		this.type = "cat";
 	}
 
 }

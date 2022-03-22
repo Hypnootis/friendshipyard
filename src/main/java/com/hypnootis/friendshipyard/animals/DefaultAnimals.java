@@ -1,25 +1,21 @@
-package com.hypnootis.friendshipyard;
+package com.hypnootis.friendshipyard.animals;
 
 import java.util.ArrayList;
 
-public class InitAnimals {
+public class DefaultAnimals {
 	
-	private static ArrayList<Animal> animals = new ArrayList<Animal>();
-	
-	static ArrayList<Animal> initDefault() {
-		
-		animals.clear();
+	private static ArrayList<Animal> animals = new ArrayList<>();
+
+	public DefaultAnimals(){
 		
 		// Initialize all the default animals, ones specified in the doc
-		
-		
-		Dog rex = new Dog("Rex", "Shepherd", "Royal Canin");
+		Dog rex = new Dog("Rex", Dog.Breed.SHEPHERD, "Royal Canin");
 		animals.add(rex);
-		Dog max = new Dog("Max", "Shepherd", "Purina ONE");
+		Dog max = new Dog("Max", Dog.Breed.SHEPHERD, "Purina ONE");
 		animals.add(max);
-		Dog tom = new Dog("Tom", "Husky", "Royal Canin");
+		Dog tom = new Dog("Tom", Dog.Breed.HUSKY, "Royal Canin");
 		animals.add(tom);
-		Dog jay = new Dog("Jay", "Husky", "Purina ONE");
+		Dog jay = new Dog("Jay", Dog.Breed.HUSKY, "Purina ONE");
 		animals.add(jay);
 		
 		Cat zoe = new Cat("Zoe", "9Lives");
@@ -62,43 +58,18 @@ public class InitAnimals {
 		alf.setBestFriend(mac);
 		
 		for (Animal animal : animals) {
-			if (animal.bestFriend != null) {
-			animal.addFriend(animal.bestFriend, false);
+			if (animal.getBestFriend() != null) {
+			animal.addFriend(animal.getBestFriend(), false);
 			}
-			else if (animal.bestFriend == null){
+			
+			else if (animal.getBestFriend() == null){
 				animal.setBestFriend(animal);
 			}
 		}
 		
+	}
+	
+	public static ArrayList<Animal> getAnimals(){
 		return animals;
 	}
-	
-	void initAnimal(Animal animal) {
-		animals.add(animal);
-	}
-	
-	void initAnimal(Animal animal, Animal bestFriend) {
-		animals.add(animal);
-		animal.setBestFriend(bestFriend);
-		animal.addFriend(bestFriend, false);
-	}
-	
-	void removeFriendship(Animal animal, Animal friend) {
-		if (animal.friends.contains(friend)) {
-			animal.friends.remove(friend);
-		}
-		else {
-			System.out.println(animal.name + " and " + friend.name + " are not friends!");
-		}
-	}
-	
-	void addFriendship(Animal animal, Animal newFriend) {
-		if (!animal.friends.contains(newFriend)) {
-			animal.addFriend(newFriend, false);
-		}
-		else {
-			System.out.println(animal.name + " and " + newFriend.name + " are already friends!");
-		}
-	}
-	
 }
