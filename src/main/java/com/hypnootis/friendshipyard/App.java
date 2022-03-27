@@ -8,7 +8,7 @@ public class App {
     	
     	// Initialize the animals
     	
-    	Simulation sim = new Simulation(DefaultAnimals.getAnimals());
+    	Simulation sim = new Simulation(DefaultAnimals.initAnimals());
     
     	
     	// Simulation.simulateMany() just calls Simulation.simulateDay()

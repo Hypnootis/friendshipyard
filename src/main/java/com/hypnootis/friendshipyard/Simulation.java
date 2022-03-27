@@ -21,12 +21,19 @@ public class Simulation {
 	}
 	
 	void friendEvent(Animal animal, boolean printEvent) {
-		Animal newFriend = animals.get(rand.nextInt(animals.size()));
+		ArrayList<Animal> possibleFriends = new ArrayList<Animal>();
 		
-		if (!newFriend.equals(animal.getBestFriend()) && !newFriend.equals(animal) && !animal.getFriends().contains(newFriend)) {
-			if (printEvent) {
-			System.out.println(animal.getName() + " asks " + newFriend.getName() + " to be friends.");
+		for (Animal possibleFriend : animals) {
+			if (!animal.equals(possibleFriend) && !animal.getFriends().contains(possibleFriend)) {
+				possibleFriends.add(possibleFriend);
 			}
+		}
+		
+		Animal newFriend = possibleFriends.get(rand.nextInt(possibleFriends.size()));
+		
+		if (printEvent) {
+			System.out.println(animal.getName() + " asks " + newFriend.getName() + " to be friends.");
+		}
 			if (animal.getFriends().size() >= 3) {
 				
 				if (rand.nextInt(100) < 90) {
@@ -43,11 +50,6 @@ public class Simulation {
 				}
 			}
 		}
-		
-		else {
-			friendEvent(animal, printEvent); // Recursion to find the animal again
-		}
-	}
 	
 	void unfriendEvent(Animal animal, boolean printEvent) {
 		

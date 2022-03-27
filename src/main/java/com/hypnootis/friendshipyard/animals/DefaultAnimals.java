@@ -6,7 +6,7 @@ public class DefaultAnimals {
 	
 	private static ArrayList<Animal> animals = new ArrayList<>();
 
-	public DefaultAnimals(){
+	public static ArrayList<Animal> initAnimals(){
 		
 		// Initialize all the default animals, ones specified in the doc
 		Dog rex = new Dog("Rex", Dog.Breed.SHEPHERD, "Royal Canin");
@@ -66,6 +66,7 @@ public class DefaultAnimals {
 				animal.setBestFriend(animal);
 			}
 		}
+		return getAnimals();
 		
 	}
 	
