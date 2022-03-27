@@ -1,4 +1,4 @@
-# Friendship Yard
+# Friendship Yard  CLI
 
 <h3> A simulation of friendships between animals living in a village yard</h3>
 Written in Java, following OOP principles.
