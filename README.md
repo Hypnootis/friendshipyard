@@ -7,7 +7,7 @@ You can simulate a day (or many days) of life in the village yard, consisting of
 In the morning, all the animals try to get rid of a friendship.
 <ul>
   <li>If an animal has 3 or more friends, they have a 90% chance to succeed in ending a friendship.</li>
-  <li>If an animal has less than 3 friends, they only have a 90% chance.</li>
+  <li>If an animal has less than 3 friends, they only have a 10% chance.</li>
   <li>Animals can have a best friend, whose friendship can't be broken</li>
 </ul>
 Lunchtime! All the animals start eating their favorite foods. Animals with the same favorite food get together to eat with each other.
