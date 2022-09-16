@@ -1,5 +1,8 @@
 # Friendship Yard  CLI
 
+<img src="https://user-images.githubusercontent.com/44028966/190570263-58c269fb-bfc1-493b-a33f-5d966e746557.png" width="300" height="300"/>
+
+
 <h3> A simulation of friendships between animals living in a village yard</h3>
 Written in Java, following OOP principles.
 
