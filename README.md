@@ -13,7 +13,10 @@ In the morning, all the animals try to get rid of a friendship.
   <li>If an animal has less than 3 friends, they only have a 10% chance.</li>
   <li>Animals can have a best friend, whose friendship can't be broken</li>
 </ul>
+
 Lunchtime! All the animals start eating their favorite foods. Animals with the same favorite food get together to eat with each other.
+
+<img src="https://user-images.githubusercontent.com/44028966/191714951-c26b5d85-a0b8-4924-9721-7d4891b03648.png" width="600" height="400"/>
   
 Evening rolls around, all the animals try to establish a new friendship, following the same rules as ending a friendship.
 <ul>
